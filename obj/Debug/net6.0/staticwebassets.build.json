@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "q6gcENLiS98Cebf3pho5VVFtsBsLcf9sH+cWtVd8gyI=",
+  "Source": "qivi-api",
+  "BasePath": "_content/qivi-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

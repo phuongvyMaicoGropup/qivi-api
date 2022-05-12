@@ -1,0 +1,232 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/andreatran/Workspace/my-project/qivi-api/qivi-api/qivi-api.csproj": {}
+  },
+  "projects": {
+    "/Users/andreatran/Workspace/my-project/qivi-api/Core/Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/andreatran/Workspace/my-project/qivi-api/Core/Core.csproj",
+        "projectName": "Core",
+        "projectPath": "/Users/andreatran/Workspace/my-project/qivi-api/Core/Core.csproj",
+        "packagesPath": "/Users/andreatran/.nuget/packages/",
+        "outputPath": "/Users/andreatran/Workspace/my-project/qivi-api/Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/andreatran/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.15.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/andreatran/Workspace/my-project/qivi-api/Infrastructure/Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/andreatran/Workspace/my-project/qivi-api/Infrastructure/Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "/Users/andreatran/Workspace/my-project/qivi-api/Infrastructure/Infrastructure.csproj",
+        "packagesPath": "/Users/andreatran/.nuget/packages/",
+        "outputPath": "/Users/andreatran/Workspace/my-project/qivi-api/Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/andreatran/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/andreatran/Workspace/my-project/qivi-api/Core/Core.csproj": {
+                "projectPath": "/Users/andreatran/Workspace/my-project/qivi-api/Core/Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.15.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/andreatran/Workspace/my-project/qivi-api/qivi-api/qivi-api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/andreatran/Workspace/my-project/qivi-api/qivi-api/qivi-api.csproj",
+        "projectName": "qivi-api",
+        "projectPath": "/Users/andreatran/Workspace/my-project/qivi-api/qivi-api/qivi-api.csproj",
+        "packagesPath": "/Users/andreatran/.nuget/packages/",
+        "outputPath": "/Users/andreatran/Workspace/my-project/qivi-api/qivi-api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/andreatran/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/andreatran/Workspace/my-project/qivi-api/Core/Core.csproj": {
+                "projectPath": "/Users/andreatran/Workspace/my-project/qivi-api/Core/Core.csproj"
+              },
+              "/Users/andreatran/Workspace/my-project/qivi-api/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/Users/andreatran/Workspace/my-project/qivi-api/Infrastructure/Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "GraphQL": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
+            "GraphQL.Server.Core": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            },
+            "GraphQL.Server.Transports.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "GraphQL.Server.Ui.Playground": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "HotChocolate": {
+              "target": "Package",
+              "version": "[12.9.0, )"
+            },
+            "HotChocolate.AspNetCore": {
+              "target": "Package",
+              "version": "[12.9.0, )"
+            },
+            "HotChocolate.AspNetCore.Playground": {
+              "target": "Package",
+              "version": "[10.5.5, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.15.1, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.15.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
