@@ -194,6 +194,23 @@
           "lib/netstandard2.0/HotChocolate.AspNetCore.Playground.dll": {}
         }
       },
+      "HotChocolate.Data/12.9.0": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate.Execution": "12.9.0",
+          "HotChocolate.Types.CursorPagination": "12.9.0"
+        },
+        "compile": {
+          "lib/net6.0/HotChocolate.Data.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/HotChocolate.Data.dll": {}
+        },
+        "build": {
+          "build/HotChocolate.Data.props": {},
+          "build/HotChocolate.Data.targets": {}
+        }
+      },
       "HotChocolate.Execution/12.9.0": {
         "type": "package",
         "dependencies": {
@@ -1406,6 +1423,31 @@
         "lib/netstandard2.0/AspNetCore.Playground.xml",
         "lib/netstandard2.0/HotChocolate.AspNetCore.Playground.dll",
         "lib/netstandard2.0/HotChocolate.AspNetCore.Playground.pdb"
+      ]
+    },
+    "HotChocolate.Data/12.9.0": {
+      "sha512": "U5beB6Yegckzjg5wjdk5DS05mEVgW4OmPXybx+gLdwfKqxxFG3EQLCpelQpL00PL0jLvRK5g/SsHg4VH6tRj2g==",
+      "type": "package",
+      "path": "hotchocolate.data/12.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/HotChocolate.Data.props",
+        "build/HotChocolate.Data.targets",
+        "greendonut-signet.png",
+        "hotchocolate-signet.png",
+        "hotchocolate.data.12.9.0.nupkg.sha512",
+        "hotchocolate.data.nuspec",
+        "lib/net5.0/HotChocolate.Data.dll",
+        "lib/net5.0/HotChocolate.Data.xml",
+        "lib/net6.0/HotChocolate.Data.dll",
+        "lib/net6.0/HotChocolate.Data.xml",
+        "lib/netcoreapp3.1/HotChocolate.Data.dll",
+        "lib/netcoreapp3.1/HotChocolate.Data.xml",
+        "lib/netstandard2.0/HotChocolate.Data.dll",
+        "lib/netstandard2.0/HotChocolate.Data.xml",
+        "strawberryshake-signet.png"
       ]
     },
     "HotChocolate.Execution/12.9.0": {
@@ -3072,6 +3114,7 @@
       "HotChocolate >= 12.9.0",
       "HotChocolate.AspNetCore >= 12.9.0",
       "HotChocolate.AspNetCore.Playground >= 10.5.5",
+      "HotChocolate.Data >= 12.9.0",
       "Infrastructure >= 1.0.0",
       "MongoDB.Bson >= 2.15.1",
       "MongoDB.Driver >= 2.15.1",
@@ -3149,6 +3192,10 @@
           "HotChocolate.AspNetCore.Playground": {
             "target": "Package",
             "version": "[10.5.5, )"
+          },
+          "HotChocolate.Data": {
+            "target": "Package",
+            "version": "[12.9.0, )"
           },
           "MongoDB.Bson": {
             "target": "Package",

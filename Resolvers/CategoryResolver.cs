@@ -13,6 +13,9 @@ namespace qivi_api.Resolvers
         public Task<Category> GetCategoryAsync(
           [Parent] Product product,
           [Service] ICategoryRepository categoryRepository) => categoryRepository.FindByCategoryId(product.CategoryId);
+        public Task<Category> GetParentCategoryAsync(
+         [Parent] Category category,
+         [Service] ICategoryRepository categoryRepository) => categoryRepository.FindByCategoryId(category.ParentCategory);
     }
 }
 

@@ -81,3 +81,4 @@
 /Users/andreatran/Workspace/my-project/qivi-api/qivi-api/obj/Debug/net6.0/qivi-api.pdb
 /Users/andreatran/Workspace/my-project/qivi-api/qivi-api/obj/Debug/net6.0/qivi-api.genruntimeconfig.cache
 /Users/andreatran/Workspace/my-project/qivi-api/qivi-api/obj/Debug/net6.0/ref/qivi-api.dll
+/Users/andreatran/Workspace/my-project/qivi-api/qivi-api/bin/Debug/net6.0/HotChocolate.Data.dll

@@ -16,6 +16,7 @@
           "HotChocolate": "12.9.0",
           "HotChocolate.AspNetCore": "12.9.0",
           "HotChocolate.AspNetCore.Playground": "10.5.5",
+          "HotChocolate.Data": "12.9.0",
           "Infrastructure": "1.0.0",
           "MongoDB.Bson": "2.15.1",
           "MongoDB.Driver": "2.15.1",
@@ -188,6 +189,18 @@
           "lib/netstandard2.0/HotChocolate.AspNetCore.Playground.dll": {
             "assemblyVersion": "10.5.5.0",
             "fileVersion": "10.5.5.0"
+          }
+        }
+      },
+      "HotChocolate.Data/12.9.0": {
+        "dependencies": {
+          "HotChocolate.Execution": "12.9.0",
+          "HotChocolate.Types.CursorPagination": "12.9.0"
+        },
+        "runtime": {
+          "lib/net6.0/HotChocolate.Data.dll": {
+            "assemblyVersion": "12.9.0.0",
+            "fileVersion": "12.9.0.0"
           }
         }
       },
@@ -880,6 +893,13 @@
       "sha512": "sha512-ZwXtlKx7aJXfhHdequp+Sbv/GsqMg6l+cEfhCwem4cELQnyh3Z1RXS2pbUiuXLVxapI6f8HW+NP70oweGgC9Lg==",
       "path": "hotchocolate.aspnetcore.playground/10.5.5",
       "hashPath": "hotchocolate.aspnetcore.playground.10.5.5.nupkg.sha512"
+    },
+    "HotChocolate.Data/12.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U5beB6Yegckzjg5wjdk5DS05mEVgW4OmPXybx+gLdwfKqxxFG3EQLCpelQpL00PL0jLvRK5g/SsHg4VH6tRj2g==",
+      "path": "hotchocolate.data/12.9.0",
+      "hashPath": "hotchocolate.data.12.9.0.nupkg.sha512"
     },
     "HotChocolate.Execution/12.9.0": {
       "type": "package",

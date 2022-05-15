@@ -13,8 +13,7 @@ namespace qivi_api.Types
             descriptor.Field(_ => _.Description);
             descriptor.Field(_ => _.CategoryId);
 
-            // Creates the relationship between Product x Category
-            descriptor.Field<CategoryResolver>(_ => _.GetCategoryAsync(default, default));
+            descriptor.Field<CategoryResolver>(_ => _.GetParentCategoryAsync(default, default));
         }
     }
 }

@@ -193,6 +193,10 @@
               "target": "Package",
               "version": "[10.5.5, )"
             },
+            "HotChocolate.Data": {
+              "target": "Package",
+              "version": "[12.9.0, )"
+            },
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[2.15.1, )"
