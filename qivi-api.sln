@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qivi-api", "qivi-api\qivi-api.csproj", "{FDFC7FD0-056F-4043-8BF5-E898A6ED7E1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{F76D99D9-C9B7-4547-AB87-FC6CBBF49E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{8D72761C-B2F9-4C71-A3A2-E0D439B40BBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDFC7FD0-056F-4043-8BF5-E898A6ED7E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDFC7FD0-056F-4043-8BF5-E898A6ED7E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDFC7FD0-056F-4043-8BF5-E898A6ED7E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDFC7FD0-056F-4043-8BF5-E898A6ED7E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76D99D9-C9B7-4547-AB87-FC6CBBF49E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76D99D9-C9B7-4547-AB87-FC6CBBF49E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76D99D9-C9B7-4547-AB87-FC6CBBF49E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76D99D9-C9B7-4547-AB87-FC6CBBF49E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D72761C-B2F9-4C71-A3A2-E0D439B40BBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D72761C-B2F9-4C71-A3A2-E0D439B40BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D72761C-B2F9-4C71-A3A2-E0D439B40BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D72761C-B2F9-4C71-A3A2-E0D439B40BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9FF3E4C-DAA8-48C4-B81C-5E507D810DB1}
+	EndGlobalSection
+EndGlobal
