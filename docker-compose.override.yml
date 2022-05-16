@@ -1,23 +1,23 @@
 version: '3.4'
 
 services:
-  catalogdb:
-    container_name: catalogdb
-    restart: always
-    volumes:
-      - ${WEBAPP_STORAGE_HOME}/site:/data/db
-    ports:
-      - "27017:27017"
+  # catalogdb:
+  #   container_name: catalogdb
+  #   restart: always
+  #   volumes:
+  #     - ${WEBAPP_STORAGE_HOME}/site:/data/db
+  #   ports:
+  #     - "27017:27017"
 
   qivi-api:
     container_name: qivi-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "MongoDbConfiguration:ConnectionString=mongodb://catalogdb:27017"
-    depends_on:
-      - catalogdb
+      - "MongoDbConfiguration:ConnectionString=mongodb+srv://andreatran2002:123Phuongvy@cluster0.to4ss.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    # depends_on:
+    #   - catalogdb
     volumes:
       - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
       - ${HOME}/.aspnet/https:/root/.aspnet/https/
-    ports:
-      - "9006:80"
+    # ports:
+    #   - "9006:80"
