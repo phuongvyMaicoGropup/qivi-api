@@ -4,7 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>qivi_api</RootNamespace>
+    <RootNamespace>Api</RootNamespace>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>c6e11a58-1ae0-4f19-8bff-4d892289ead2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

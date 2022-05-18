@@ -3,7 +3,7 @@ using Core.Entities;
 using Core.Repositories;
 using HotChocolate.Subscriptions;
 
-namespace qivi_api.Mutations
+namespace Api.Mutations
 {
     [ExtendObjectType(Name = "Mutation")]
     public class ProductMutation

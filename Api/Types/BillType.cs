@@ -1,8 +1,8 @@
 ﻿using System;
 using Core.Entities;
-using qivi_api.Resolvers;
+using Api.Resolvers;
 
-namespace qivi_api.Types
+namespace Api.Types
 {
     public class BillType : ObjectType<Bill>
     {

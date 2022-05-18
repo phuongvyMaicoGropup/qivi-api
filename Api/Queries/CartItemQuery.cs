@@ -2,7 +2,7 @@
 using Core.Entities;
 using Core.Repositories;
 
-namespace qivi_api.Queries
+namespace Api.Queries
 {
 	[ExtendObjectType("Query")]
 	public class CartItemQuery

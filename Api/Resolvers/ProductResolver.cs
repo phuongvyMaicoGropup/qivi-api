@@ -2,7 +2,7 @@
 using Core.Entities;
 using Core.Repositories;
 
-namespace qivi_api.Resolvers
+namespace Api.Resolvers
 {
 	
         [ExtendObjectType(Name = "Product")]

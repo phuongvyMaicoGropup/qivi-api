@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "qivi_api": {
+    "Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

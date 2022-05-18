@@ -1,11 +1,8 @@
 version: '3.4'
 
 services:
-  # catalogdb:
-  #   image: mongo
-
-  qivi-api:
-    image: ${DOCKER_REGISTRY-}qivi-api
+  api:
+    image: ${DOCKER_REGISTRY-}api
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Api/Dockerfile

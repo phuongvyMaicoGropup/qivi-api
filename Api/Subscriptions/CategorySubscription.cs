@@ -1,7 +1,7 @@
 ﻿using System;
 using Core.Entities;
 
-namespace qivi_api.Subscriptions
+namespace Api.Subscriptions
 {
     [ExtendObjectType("Subscription")]
 	public class CategorySubscription

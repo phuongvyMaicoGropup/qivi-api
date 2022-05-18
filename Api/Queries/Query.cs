@@ -3,7 +3,7 @@ using Core.Entities;
 using Core.Repositories;
 using HotChocolate;
 
-namespace qivi_api.Queries
+namespace Api.Queries
 {
     public class Query
     {

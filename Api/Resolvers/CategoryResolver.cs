@@ -4,7 +4,7 @@ using Core.Repositories;
 using HotChocolate;
 using HotChocolate.Types;
 
-namespace qivi_api.Resolvers
+namespace Api.Resolvers
 {
 
     [ExtendObjectType(Name = "Category")]

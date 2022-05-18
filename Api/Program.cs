@@ -7,10 +7,10 @@ using Infrastructure.Data;
 using Infrastructure.Data.Interfaces;
 using Infrastructure.Repositories;
 using Infrastructure.Repositories.Interfaces;
-using qivi_api.Mutations;
-using qivi_api.Queries;
-using qivi_api.Resolvers;
-using qivi_api.Types;
+using Api.Mutations;
+using Api.Queries;
+using Api.Resolvers;
+using Api.Types;
 var builder = WebApplication.CreateBuilder(args);
 
 

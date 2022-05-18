@@ -3,7 +3,7 @@ using Core.Entities;
 using Core.Repositories;
 using MongoDB.Driver;
 
-namespace qivi_api.Queries
+namespace Api.Queries
 {
 	[ExtendObjectType(Name = "Query")]
 
