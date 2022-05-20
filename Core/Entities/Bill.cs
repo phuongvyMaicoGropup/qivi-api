@@ -9,12 +9,13 @@ namespace Core.Entities
         {
 
         }
-		public Bill(string customerId , decimal total , string note , string invoice )
+		public Bill(string customerId , decimal total , string note , string invoice , decimal amountOwed)
 		{
 			CustomerId = customerId;
-			Total = Total;
+			Total = total;
 			Note = note;
-			Invoice = invoice; 
+			Invoice = invoice;
+			AmountOwed = amountOwed;
 		}
 		public string CustomerId { set; get;} 
 		public decimal Total { set; get; }

@@ -11,6 +11,8 @@ using Api.Mutations;
 using Api.Queries;
 using Api.Resolvers;
 using Api.Types;
+using Api.Subscriptions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -34,6 +36,8 @@ builder.Services.AddScoped<IBillRepository, BillRepository>();
 builder.Services
    .AddGraphQLServer()
    .AddFiltering()
+   .AddProjections()
+    .AddSorting()
     .AddQueryType(d => d.Name("Query"))
                 .AddTypeExtension<BillQuery>()
                 .AddTypeExtension<ProductQuery>()
@@ -46,6 +50,8 @@ builder.Services
                 .AddTypeExtension<CategoryMutation>()
                 .AddTypeExtension<UserMutation>()
                 .AddTypeExtension<CartItemMutation>()
+            .AddSubscriptionType(d => d.Name("Subscription"))
+                .AddTypeExtension<CustomerSubscription>()
             .AddType<ProductType>()
             .AddType<BillType>()
             .AddType<CategoryType>()
@@ -58,6 +64,7 @@ var app = builder.Build();
 
 
 app.UseHttpsRedirection();
+app.UseWebSockets();
 
 //app.UseAuthorization();
 app.UseRouting(); 
@@ -67,4 +74,5 @@ app.UseEndpoints(endpoints =>
 });
 
 app.Run();
+
 

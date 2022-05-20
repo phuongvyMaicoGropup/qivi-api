@@ -12,14 +12,20 @@ namespace Api.Mutations
 		{
 		}
 
-        public async Task<User> CreateUserAsync(string name, string phoneNumber, string address, 
+        public async Task<User?> CreateUserAsync(string name, string phoneNumber, string address, 
             [Service] IUserRepository userRepository, [Service] ITopicEventSender eventSender)
         {
-            var result = await userRepository.InsertAsync(new User(name,phoneNumber, address));
+            var accountAvailable = await userRepository.AccountInfoIsAvailable(name,phoneNumber);
+            if (!accountAvailable)
+            {
+                var result = await userRepository.InsertAsync(new User(name, phoneNumber, address));
 
-            //await eventSender.SendAsync(nameof(Subscriptions.ProductSubscriptions.OnCreateAsync), result);
+                await eventSender.SendAsync(nameof(Subscriptions.CustomerSubscription.OnCreateCustomer), result);
 
-            return result;
+                return result;
+            }
+            return null;  
+           
         }
 
         public User UpdateUser(User user,  [Service] IUserRepository userRepository, [Service] ITopicEventSender eventSender)

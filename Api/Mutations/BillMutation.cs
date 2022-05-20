@@ -12,11 +12,11 @@ namespace Api.Mutations
 		public BillMutation()
 		{
 		}
-        public async Task<Bill> CreateBillAsync(string customerId, decimal total, string note, string invoice,
+        public async Task<Bill> CreateBillAsync(string customerId, decimal total, string note, string invoice, decimal amountOwed,
 
             [Service] IBillRepository billRepository, [Service] ITopicEventSender eventSender)
         {
-            var result = await billRepository.InsertAsync(new Bill(customerId, total , note, invoice));
+            var result = await billRepository.InsertAsync(new Bill(customerId, total , note, invoice, amountOwed));
 
             return result;
         }
