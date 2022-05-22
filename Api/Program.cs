@@ -12,6 +12,7 @@ using Api.Queries;
 using Api.Resolvers;
 using Api.Types;
 using Api.Subscriptions;
+using HotChocolate.Language;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<IBillRepository, BillRepository>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSha256DocumentHashProvider(HashFormat.Hex); 
 // GraphQL
 builder.Services
    .AddGraphQLServer()
@@ -44,6 +47,9 @@ builder.Services
                 .AddTypeExtension<CategoryQuery>()
                 .AddTypeExtension<UserQuery>()
                 .AddTypeExtension<CartItemQuery>()
+                .UseAutomaticPersistedQueryPipeline()
+                .AddReadOnlyFileSystemQueryStorage("./persisted_queries")
+                .AddInMemoryQueryStorage()
             .AddMutationType(d => d.Name("Mutation"))
                 .AddTypeExtension<BillMutation>()
                 .AddTypeExtension<ProductMutation>()
@@ -59,7 +65,9 @@ builder.Services
             .AddType<CategoryResolver>()
             .AddType<ProductResolver>()
             .AddType<UserResolver>()
-            .AddInMemorySubscriptions(); ;
+
+            .AddInMemorySubscriptions();
+
 var app = builder.Build();
 
 
