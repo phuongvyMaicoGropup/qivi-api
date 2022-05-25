@@ -13,6 +13,7 @@ using Api.Resolvers;
 using Api.Types;
 using Api.Subscriptions;
 using HotChocolate.Language;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,19 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<IBillRepository, BillRepository>();
 builder.Services.AddMemoryCache();
-builder.Services.AddSha256DocumentHashProvider(HashFormat.Hex); 
+builder.Services.AddSha256DocumentHashProvider(HashFormat.Hex);
+
+
+// Serilog
+var logger = new LoggerConfiguration()
+.ReadFrom.Configuration(builder.Configuration)
+.Enrich.FromLogContext()
+.CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+
 // GraphQL
 builder.Services
    .AddGraphQLServer()
