@@ -15,9 +15,9 @@ namespace Infrastructure.Repositories
 			collection = catalogContext.GetCollection<User>("User"); 
 
 		}
-		public async Task<User> GetUserByPhoneNumber(string phoneNumber)
+		public async Task<User?> GetUserByPhoneNumber(string phoneNumber)
 		=> await collection.Find(u => u.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
-		public async Task<User> GetUserByName(string name)
+		public async Task<User?> GetUserByName(string name)
 		=> await collection.Find(u => u.Name == name).FirstOrDefaultAsync();
 
         public async Task<bool> AccountInfoIsAvailable(string name, string phoneNumber)

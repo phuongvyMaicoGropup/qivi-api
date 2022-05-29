@@ -27,6 +27,9 @@
     <PackageReference Include="GraphQL.Server.Core" Version="5.2.1" />
     <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="6.0.0" />
     <PackageReference Include="GraphQL.Server.Ui.Playground" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,6 +43,10 @@
     <None Remove="Mutation\" />
     <None Remove="Subscriptions\" />
     <None Remove="Types\SortingsType\" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Microsoft.AspNetCore.Identity.UI" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <None Remove="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
@@ -49,6 +56,7 @@
     <Folder Include="Mutations\" />
     <Folder Include="Subscriptions\" />
     <Folder Include="Types\SortingsType\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

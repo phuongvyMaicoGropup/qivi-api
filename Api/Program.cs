@@ -14,6 +14,8 @@ using Api.Types;
 using Api.Subscriptions;
 using HotChocolate.Language;
 using Serilog;
+using Core.Hubs;
+using Infrastructure.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +24,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<MongoDbConfiguration>(
     builder.Configuration.GetSection("MongoDbConfiguration"));
 
-
 builder.Services.AddScoped<MongoDbConfiguration>();
+var mongoDbSettings = builder.Configuration.GetSection("MongoDbConfiguration").Get<MongoDbConfiguration>();
 
+
+
+// MongoIdentity
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+      .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>
+      (
+          mongoDbSettings.ConnectionString, mongoDbSettings.Database
+      );
 
 // Repositories
 builder.Services.AddScoped<ICatalogContext, CatalogContext>();
@@ -43,10 +53,12 @@ var logger = new LoggerConfiguration()
 .ReadFrom.Configuration(builder.Configuration)
 .Enrich.FromLogContext()
 .CreateLogger();
-
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
+//SignalR
+
+builder.Services.AddSignalR();
 
 // GraphQL
 builder.Services
@@ -93,6 +105,8 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapGraphQL("/api/graphql");
 });
+app.MapHub<ChatHub>("/chat");
+
 
 app.Run();
 

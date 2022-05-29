@@ -16,6 +16,7 @@
     <None Remove="Serilog" />
     <None Remove="Serilog.Sinks.File" />
     <None Remove="Serilog.AspNetCore" />
+    <None Remove="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
@@ -23,6 +24,7 @@
     <Folder Include="Repositories\" />
     <Folder Include="Data\Interfaces\" />
     <Folder Include="Base\" />
+    <Folder Include="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.15.1" />

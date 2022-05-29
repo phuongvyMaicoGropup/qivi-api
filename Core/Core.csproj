@@ -13,6 +13,11 @@
     <None Remove="Base\" />
     <None Remove="Common\" />
     <None Remove="Common\Models\" />
+    <None Remove="Hubs\" />
+    <None Remove="Microsoft.AspNet.SignalR" />
+    <None Remove="Serilog" />
+    <None Remove="Microsoft.AspNetCore.SignalR" />
+    <None Remove="AspNetCore.Identity.MongoDbCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -20,8 +25,13 @@
     <Folder Include="Base\" />
     <Folder Include="Common\" />
     <Folder Include="Common\Models\" />
+    <Folder Include="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.15.1" />
+    <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.3" />
+    <PackageReference Include="Serilog" Version="2.11.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="AspNetCore.Identity.MongoDbCore" Version="3.1.2" />
   </ItemGroup>
 </Project>

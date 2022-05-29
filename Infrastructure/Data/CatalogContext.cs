@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Data
 {
-    public class CatalogContext : ICatalogContext
+    public class CatalogContext : ICatalogContext  
     {
         private readonly IMongoDatabase database;
 
@@ -23,6 +23,8 @@ namespace Infrastructure.Data
         {
             return this.database.GetCollection<T>(name);
         }
+
+
     }
 }
 
