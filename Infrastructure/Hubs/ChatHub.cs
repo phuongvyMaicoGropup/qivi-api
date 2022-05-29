@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Infrastructure.Hubs
 {
-	public class ChatHub : Hub , IChatHub
+	public class ChatHub : Hub 
 	{
         private IMessageRepository _messageRepository; 
 		public ChatHub(IMessageRepository messageRepository)
@@ -19,12 +19,12 @@ namespace Infrastructure.Hubs
             throw new NotImplementedException();
         }
 
-        public async Task SendMessage(Message message)
+        public async Task SendMessage(string creatorId , string receiverId, string message)
         {
-            var result = _messageRepository.InsertAsync(message);
+            var result = _messageRepository.InsertAsync(new Message(creatorId,message,DateTime.Now,receiverId));
             if (result != null)
             {
-                var users = new string[] { message.CreatorId, message.ReceiverId };
+                var users = new string[] { creatorId, receiverId };
                 await Clients.Users(users).SendAsync("SendMessage", message);
 
             }
