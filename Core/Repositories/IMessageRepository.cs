@@ -6,7 +6,6 @@ namespace Core.Repositories
 {
 	public interface IMessageRepository : IBaseRepository<Message>
 	{
-		
 	}
 }
 

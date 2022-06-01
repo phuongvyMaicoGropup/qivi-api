@@ -7,8 +7,13 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Repositories
 {
-    public class MessageRepository : BaseRepository<Message>, IMessageRepository
+    public class MessageRepository : BaseRepository<Message>,IMessageRepository
     {
+        //public MessageRepository(IHubConnectionContext<dynamic> clients)
+        //{
+
+        //}
+
         private readonly IMongoCollection<Message> collection;
         public MessageRepository(ICatalogContext catalogContext) : base(catalogContext)
         {

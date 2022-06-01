@@ -16,6 +16,8 @@ using HotChocolate.Language;
 using Serilog;
 using Core.Hubs;
 using Infrastructure.Hubs;
+using Microsoft.AspNetCore.Identity;
+using Ninject;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,16 +39,21 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
       );
 
 // Repositories
+builder.Services.AddScoped< UserManager<ApplicationUser>>();
 builder.Services.AddScoped<ICatalogContext, CatalogContext>();
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<IBillRepository, BillRepository>();
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSha256DocumentHashProvider(HashFormat.Hex);
 
+builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
 
 // Serilog
 var logger = new LoggerConfiguration()
@@ -58,7 +65,22 @@ builder.Logging.AddSerilog(logger);
 
 //SignalR
 
-builder.Services.AddSignalR();
+builder.Services.AddSignalR(e => {
+    e.EnableDetailedErrors = true; 
+    e.MaximumReceiveMessageSize = 102400000;
+});
+//Cors
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("https://example.com")
+                .AllowAnyHeader()
+                .WithMethods("GET", "POST")
+                .AllowCredentials();
+        });
+});
 
 // GraphQL
 builder.Services
@@ -98,14 +120,24 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseWebSockets();
+app.UseStaticFiles();
 
 //app.UseAuthorization();
-app.UseRouting(); 
+app.UseRouting();
+app.UseCors();
+app.MapGraphQL("/api/graphql");
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapGraphQL("/api/graphql");
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
+    
 });
-app.MapHub<ChatHub>("/chat");
+app.MapHub<ChatHub>("/chathub");
+
+// IoC
+//GlobalHost.DependencyResolver.Register(typeof(SignalRChatHub),() => new SignalRChatHub(new IChatRepository()));
 
 
 app.Run();

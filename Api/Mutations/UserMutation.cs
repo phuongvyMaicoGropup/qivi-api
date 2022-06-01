@@ -9,6 +9,7 @@ namespace Api.Mutations
     [ExtendObjectType(Name ="Mutation")]
 	public class UserMutation
 	{
+
         private UserManager<ApplicationUser> _userManager;
         private readonly ILogger<IBillRepository> _logger;
         public UserMutation(UserManager<ApplicationUser> userManager, ILogger<IBillRepository> logger)
