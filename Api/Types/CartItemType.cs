@@ -13,10 +13,12 @@ namespace Api.Types
         {
             descriptor.Field(_ => _.Id);
             descriptor.Field(_ => _.UserId);
+            descriptor.Field(_ => _.SessionId);
             descriptor.Field(_ => _.ProductId);
             descriptor.Field(_ => _.Quantity);
 
             descriptor.Field<ProductResolver>(_ => _.GetProductInCartAsync(default, default));
+            descriptor.Field<ShoppingSessionResolver>(_ => _.GetShoppingSessionByCartAsync(default, default));
         }
     }
 }

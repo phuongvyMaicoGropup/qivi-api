@@ -4,7 +4,7 @@ using Core.Repositories;
 
 namespace Api.Queries
 {
-	[ExtendObjectType(Name ="Query")]
+	[ExtendObjectType(nameof(Query))]
 	public class CategoryQuery
 	{
 		public CategoryQuery()

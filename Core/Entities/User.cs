@@ -13,9 +13,7 @@ namespace Core.Entities
 		}
 		public string Name { set; get; }
 		public string PhoneNumber { set; get; }
-		public bool IsValid { set; get; } = false; 
 		public string Address { set; get; }
-		public bool IsSaler { set; get; } = false;
 
 		
 	}

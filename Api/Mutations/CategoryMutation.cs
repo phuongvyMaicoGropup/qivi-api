@@ -11,9 +11,9 @@ namespace Api.Mutations
 		public CategoryMutation()
 		{
 		}
-        public async Task<Category> CreateCategoryAsync( string description, string categoryId , string parentCategory ,[Service] ICategoryRepository categoryRepository, [Service] ITopicEventSender eventSender)
+        public async Task<Category> CreateCategoryAsync(string name ,  string description, string categoryId , string parentCategory ,[Service] ICategoryRepository categoryRepository, [Service] ITopicEventSender eventSender)
         {
-            var result = await categoryRepository.InsertAsync(new Category( description, categoryId, parentCategory));
+            var result = await categoryRepository.InsertAsync(new Category( name,  description,  categoryId,  parentCategory));
 
             await eventSender.SendAsync(nameof(Subscriptions.CategorySubscription.OnCreateAsync), result);
 

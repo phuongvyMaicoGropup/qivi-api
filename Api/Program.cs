@@ -18,6 +18,7 @@ using Core.Hubs;
 using Infrastructure.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Ninject;
+using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,11 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<IBillRepository, BillRepository>();
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+builder.Services.AddScoped<IShoppingSessionRepository, ShoppingSessionRepository>();
+builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddScoped<IOrderDetailsRepository, OrderDetailsRepository>();
+
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSha256DocumentHashProvider(HashFormat.Hex);
@@ -69,6 +75,14 @@ builder.Services.AddSignalR(e => {
     e.EnableDetailedErrors = true; 
     e.MaximumReceiveMessageSize = 102400000;
 });
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.MimeTypes =
+    ResponseCompressionDefaults.MimeTypes.Concat(
+        new[] { "application/octet-stream" });
+});
+
 //Cors
 builder.Services.AddCors(options =>
 {
@@ -82,13 +96,16 @@ builder.Services.AddCors(options =>
         });
 });
 
+
+
+
 // GraphQL
 builder.Services
    .AddGraphQLServer()
    .AddFiltering()
    .AddProjections()
     .AddSorting()
-    .AddQueryType(d => d.Name("Query"))
+    .AddQueryType(d => d.Name(nameof(Query)))
                 .AddTypeExtension<BillQuery>()
                 .AddTypeExtension<ProductQuery>()
                 .AddTypeExtension<CategoryQuery>()
@@ -111,7 +128,7 @@ builder.Services
             .AddType<CartItemType>()
             .AddType<CategoryResolver>()
             .AddType<ProductResolver>()
-            .AddType<UserResolver>()
+            .AddType<UserResolver>() 
 
             .AddInMemorySubscriptions();
 
@@ -135,6 +152,9 @@ app.UseEndpoints(endpoints =>
     
 });
 app.MapHub<ChatHub>("/chathub");
+
+
+app.UseResponseCompression(); 
 
 // IoC
 //GlobalHost.DependencyResolver.Register(typeof(SignalRChatHub),() => new SignalRChatHub(new IChatRepository()));

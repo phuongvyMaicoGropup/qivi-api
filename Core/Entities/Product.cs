@@ -8,40 +8,31 @@ namespace Core.Entities
     
     public class Product : BaseEntity
     {
-        public Product()
-        {
 
-        }
-
-        public Product(string name,string description, decimal price, bool isEmpty, string categoryId, decimal discountPrice, int discountQuantity, string quantity , string image )
+        public Product(string name,string description, string discountId, string sku,  decimal price, bool isEmpty, string categoryId,string image )
         {
             Name = name;
             Description = description;
             Price = price;
             IsEmpty = isEmpty;
-            Quantity = quantity; 
             CategoryId = categoryId;
-            DiscountPrice = discountPrice;
-            DiscountQuantity = discountQuantity;
-            Image = image; 
+            Image = image;
+            SKU = sku;
+            DiscountId = discountId;
         }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
-        public int DiscountQuantity { set; get; }
-        public decimal DiscountPrice { set; get; }
-        public bool IsEmpty { get; set; }
+        public string SKU { set; get; }
         public string CategoryId { get; set; }
+        public decimal Price { get; set; }
+        public string? DiscountId { set; get; }
+        public DateTime CreatedAt { set; get; } = DateTime.Now;
+        public DateTime ModifiedAt { set; get; } = DateTime.Now; 
+        public bool IsEmpty { get; set; } = false; 
         public string Image { set; get; } = "";
-        public string Quantity { set; get; } = "";
        
-        //public QuantityType QuantityType { set; get; } = QuantityType.NONE; 
     }
 
-    public enum QuantityType
-    {
-        KG , G , ML , L , NONE
-    }
 }
 
 

@@ -2,6 +2,7 @@
 using Core.Entities;
 using Core.Hubs;
 using Core.Repositories;
+using Infrastructure.Configurations;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.SignalR;
 
@@ -10,24 +11,30 @@ namespace Infrastructure.Hubs
     public class ChatHub : Hub
     {
         private IMessageRepository _messageRepository;
+        //private readonly static ConnectionMapping<string> _connections =
+        //    new ConnectionMapping<string>();
         public ChatHub(IMessageRepository messageRepository)
         {
-            if (messageRepository == null)
-            {
-                throw new ArgumentNullException("messageRepository");
-            }
             _messageRepository = messageRepository; 
         }
+        public string GetConnectionId()
+        {
+            return Context.ConnectionId;
+        }
+
 
         public override Task OnConnectedAsync()
         {
-            if (string.IsNullOrEmpty(Context.ConnectionId))
-            {
-                throw new System.Exception(nameof(Context.ConnectionId)); //This code is never hit
-            }
-            Clients.All.SendAsync("broadcastMessage", "system", $"{Context.ConnectionId} joined the conversation");
+            string name = Context.User.Identity.Name;
+
+
+            //_connections.Add(name, Context.ConnectionId);
+
             return base.OnConnectedAsync();
         }
+
+     
+
         public async Task SendMessage(string creatorId, string receiverId, string message)
         {
             var result = _messageRepository.InsertAsync(new Message(creatorId, message, DateTime.Now, receiverId));

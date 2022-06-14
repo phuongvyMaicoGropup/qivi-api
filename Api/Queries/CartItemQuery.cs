@@ -4,7 +4,7 @@ using Core.Repositories;
 
 namespace Api.Queries
 {
-	[ExtendObjectType("Query")]
+	[ExtendObjectType(nameof(Query))]
 	public class CartItemQuery
 	{
 		public CartItemQuery()

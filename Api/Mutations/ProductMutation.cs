@@ -9,12 +9,12 @@ namespace Api.Mutations
     public class ProductMutation
     {
 
-        public async Task<Product> CreateProductAsync(string name, string description , decimal price ,bool isEmpty, string categoryId ,
-            int discountQuantity, decimal discountPrice, string quantity, string image , 
-           
+        public async Task<Product> CreateProductAsync(string name, string description, string discountId, string sku, decimal price, bool isEmpty, string categoryId, string image,
+
+
             [Service] IProductRepository productRepository, [Service] ITopicEventSender eventSender)
         {
-            var result = await productRepository.InsertAsync(new Product(name, description, price, isEmpty, categoryId, discountPrice, discountQuantity, quantity, image));
+            var result = await productRepository.InsertAsync(new Product(name, description, discountId,  sku, price,  isEmpty,  categoryId,  image));
 
             //await eventSender.SendAsync(nameof(Subscriptions.ProductSubscriptions.OnCreateAsync), result);
 

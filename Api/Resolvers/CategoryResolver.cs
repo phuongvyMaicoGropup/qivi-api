@@ -7,7 +7,7 @@ using HotChocolate.Types;
 namespace Api.Resolvers
 {
 
-    [ExtendObjectType(Name = "Category")]
+    [ExtendObjectType(typeof(Category))]
     public class CategoryResolver
     {
         public Task<Category> GetCategoryAsync(

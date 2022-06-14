@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace Api.Queries
 {
-	[ExtendObjectType(Name = "Query")]
+	[ExtendObjectType(nameof(Query))]
 
 	public class UserQuery
 	{

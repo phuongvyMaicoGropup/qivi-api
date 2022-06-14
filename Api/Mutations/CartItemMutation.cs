@@ -12,11 +12,11 @@ namespace Api.Mutations
 		public CartItemMutation()
 		{
 		}
-        public async Task<CartItem> CreateCartItemAsync( string userId, string productId ,int quantity, 
+        public async Task<CartItem> CreateCartItemAsync(string productId, string userId, int quantity, string sessionId,
 
             [Service] ICartItemRepository cartItemRepository, [Service] ITopicEventSender eventSender)
         {
-            var result = await cartItemRepository.InsertAsync(new CartItem(productId, userId, quantity));
+            var result = await cartItemRepository.InsertAsync(new CartItem(productId, userId, quantity, sessionId));
 
             return result;
         }

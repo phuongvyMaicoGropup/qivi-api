@@ -24,6 +24,8 @@ namespace Infrastructure.Base
             return await this.collection.Find(_ => true).ToListAsync();
         }
 
+        
+
         public async Task<T> GetByIdAsync(string id)
         {
             var filter = Builders<T>.Filter.Eq(_ => _.Id, id);

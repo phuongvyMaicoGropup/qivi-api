@@ -5,12 +5,14 @@ namespace Core.Entities
 {
 	public class CartItem : BaseEntity
 	{
-		public CartItem(string productId , string userId, int quantity)
+		public CartItem(string productId , string userId, int quantity , string sessionId)
 		{
 			ProductId = productId;
 			UserId = userId;
-			Quantity = quantity; 
+			Quantity = quantity;
+			SessionId = sessionId; 
 		}
+		public string SessionId { set; get; }
 		public string ProductId { set; get; }
 		public string UserId { set; get; }
 		public int Quantity { set; get; }
