@@ -35,7 +35,8 @@ namespace Api.Mutations
                 if (identityResult.Succeeded)
                 {
                     _logger.LogInformation($"Create new user {name}  {phoneNumber} successful");
-                     result = await userRepository.InsertAsync(new User(fullName, phoneNumber, address));
+                    User newUser = new User(name, fullName, phoneNumber, address);
+                     result = await userRepository.InsertAsync(newUser);
                     await eventSender.SendAsync(nameof(Subscriptions.CustomerSubscription.OnCreateCustomer), result);
                     return result;
 

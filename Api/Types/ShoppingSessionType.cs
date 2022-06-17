@@ -11,8 +11,11 @@ namespace Api.Types
             descriptor.Field(_ => _.Id);
             descriptor.Field(_ => _.UserId);
             descriptor.Field(_ => _.Total);
+            descriptor.Field(_ => _.ModifiedAt);
+            descriptor.Field(_ => _.CreatedAt);
 
             descriptor.Field<UserResolver>(_ => _.GetUserByShoppingSessionAsync(default, default));
+            descriptor.Field<CartItemResolver>(_ => _.GetCartsFromSessionAsync(default, default));
         }
     }
 }

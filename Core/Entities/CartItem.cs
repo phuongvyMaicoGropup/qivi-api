@@ -5,6 +5,10 @@ namespace Core.Entities
 {
 	public class CartItem : BaseEntity
 	{
+		public CartItem()
+        {
+
+        }
 		public CartItem(string productId , string userId, int quantity , string sessionId)
 		{
 			ProductId = productId;

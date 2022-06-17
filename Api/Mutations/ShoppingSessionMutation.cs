@@ -11,11 +11,11 @@ namespace Api.Mutations
 		public ShoppingSessionMutation()
 		{
 		}
-        public async Task<ShoppingSession> CreateShoppingSessionAsync(string productId,decimal total,
+        public async Task<ShoppingSession> CreateShoppingSessionAsync(string userId,decimal total,
 
             [Service] IShoppingSessionRepository shoppingSessionRepository, [Service] ITopicEventSender eventSender)
         {
-            var result = await shoppingSessionRepository.InsertAsync(new ShoppingSession(productId, total));
+            var result = await shoppingSessionRepository.InsertAsync(new ShoppingSession(userId, total));
 
             return result;
         }
