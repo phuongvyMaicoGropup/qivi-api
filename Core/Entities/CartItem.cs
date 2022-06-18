@@ -9,17 +9,17 @@ namespace Core.Entities
         {
 
         }
-		public CartItem(string productId , string userId, int quantity , string sessionId)
+		public CartItem(string productId , int quantity , string sessionId)
 		{
 			ProductId = productId;
-			UserId = userId;
 			Quantity = quantity;
 			SessionId = sessionId; 
 		}
 		public string SessionId { set; get; }
 		public string ProductId { set; get; }
-		public string UserId { set; get; }
 		public int Quantity { set; get; }
+		public DateTime CreatedAt { set; get; } = DateTime.Now;
+		public DateTime ModifiedAt { set; get; } = DateTime.Now; 
 
 
 	}

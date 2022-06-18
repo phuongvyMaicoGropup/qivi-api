@@ -5,10 +5,11 @@ using HotChocolate.Subscriptions;
 
 namespace Api.Mutations
 {
-	[ExtendObjectType(Name = "Mutation")]
-    
+    [ExtendObjectType(nameof(Mutation))]
 
-	public class BillMutation
+
+
+    public class BillMutation
 	{
         private readonly ILogger<BillMutation> _logger;
 

@@ -6,7 +6,7 @@ namespace Core.Repositories
 {
 	public interface ICartItemRepository : IBaseRepository<CartItem>
 	{
-		public Task<List<CartItem>> GetAllCartByUserId(string userId); 
+		public Task<List<CartItem>> GetBySessionId(string sessionId); 
 	}
 }
 

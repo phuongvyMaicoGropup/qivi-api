@@ -5,7 +5,8 @@ using HotChocolate.Subscriptions;
 
 namespace Api.Mutations
 {
-    [ExtendObjectType(Name = "Mutation")]
+    [ExtendObjectType(nameof(Mutation))]
+
 
     public class CartItemMutation
     {
@@ -17,33 +18,17 @@ namespace Api.Mutations
 
         public async Task<CartItem> CreateCartItemAsync(string productId, string userId, int quantity, string sessionId,
 
-            [Service] ICartItemRepository cartItemRepository, [Service] IShoppingSessionRepository sessionRepository, [Service] IProductRepository productRepository, [Service] ITopicEventSender eventSender)
+            [Service] ICartItemRepository cartItemRepository, [Service] IShoppingSessionRepository sessionRepository, [Service] IUserRepository userRepository, [Service] IProductRepository productRepository, [Service] ITopicEventSender eventSender)
         {
             ShoppingSession session = await sessionRepository.GetByIdAsync(sessionId);
             Product product = await productRepository.GetByIdAsync(productId);
-
-            List<CartItem> cartItems = await cartItemRepository.GetAllCartByUserId(userId);
-            CartItem result = new CartItem();
-            bool isInStore = false;
-            cartItems.ForEach(cart =>
+            User user = await userRepository.GetByIdAsync(userId);
+            if (session == null || product == null || user == null)
             {
-                if (cart.ProductId == productId)
-                {
-                    _logger.LogInformation("Cart Item has been stored in database");
-                    cart.Quantity = cart.Quantity + quantity;
-                    isInStore = true;
-                    result = cart;
-                    cartItemRepository.Update(result);
-
-                }
-            });
-            if (!isInStore)
-            {
-                _logger.LogInformation("Cart Item has not been stored in database");
-
-                result = await cartItemRepository.InsertAsync(new CartItem(productId, userId, quantity, sessionId));
-
+                _logger.LogError("create cart item false . Product {productId} or userId {userId} or sessionID {sessionId} does not exist  ", productId, userId, sessionId);
+                return null; 
             }
+            var result = await cartItemRepository.InsertAsync(new CartItem(productId, quantity, sessionId));
             session.ModifiedAt = DateTime.Now;
             session.Total = session.Total + quantity * product.Price;
             sessionRepository.Update(session);
@@ -58,13 +43,11 @@ namespace Api.Mutations
             {
                 CartItem cartInDB = await cartItemRepository.GetByIdAsync(cart.Id);
                 ShoppingSession session = await sessionRepository.GetByIdAsync(cart.SessionId);
-
                 try
                 {
                     var product = await productRepository.GetByIdAsync(cart.ProductId);
                     if (product != null)
                     {
-
                         session.ModifiedAt = DateTime.Now;
                         session.Total = session.Total + (cart.Quantity - cartInDB.Quantity) * product.Price;
                         sessionRepository.Update(session);
@@ -75,7 +58,7 @@ namespace Api.Mutations
                 }
                 catch (Exception e)
                 {
-                    _logger.LogError("Remove cart item {id} false . Product {productId} does not exist ", cart.Id, cart.ProductId);
+                    _logger.LogError("Update cart item {id} false . Product {productId} does not exist ", cart.Id, cart.ProductId);
                     _logger.LogError(e.ToString());
                     return null;
 
@@ -118,8 +101,6 @@ namespace Api.Mutations
                     _logger.LogError("Remove cart item {id} false . Product {productId} does not exist ", id, cart.ProductId);
                     return null;
                 }
-
-
             }
             else
             {

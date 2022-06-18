@@ -10,8 +10,8 @@ namespace Api.Queries
 		public CartItemQuery()
 		{
 		}
-		public async Task<IEnumerable<CartItem>> GetAllCartByUserIdAsync(string userId, [Service] ICartItemRepository cartItemRepository) =>
-			await cartItemRepository.GetAllCartByUserId(userId);
+		public async Task<IEnumerable<CartItem>> GetAllCartBySessionIdAsync(string sessionId, [Service] ICartItemRepository cartItemRepository) =>
+			await cartItemRepository.GetBySessionId(sessionId);
 
 	
 	}

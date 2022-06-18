@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Api.Mutations
 {
-    [ExtendObjectType(Name ="Mutation")]
-	public class UserMutation
+    [ExtendObjectType(nameof(Mutation))]
+
+    public class UserMutation
 	{
 
         private UserManager<ApplicationUser> _userManager;

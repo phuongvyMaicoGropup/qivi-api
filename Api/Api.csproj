@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FireflySoft.RateLimit.AspNetCore" Version="2.1.0" />
     <PackageReference Include="GraphQL" Version="5.2.0" />
     <PackageReference Include="HotChocolate" Version="12.9.0" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="12.9.0" />

@@ -19,6 +19,9 @@ using Infrastructure.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Ninject;
 using Microsoft.AspNetCore.ResponseCompression;
+using FireflySoft.RateLimit.Core.InProcessAlgorithm;
+using FireflySoft.RateLimit.AspNetCore;
+using FireflySoft.RateLimit.Core.Rule;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -97,6 +100,23 @@ builder.Services.AddCors(options =>
 });
 
 
+//rate limit token bucket
+builder.Services.AddRateLimit(new InProcessTokenBucketAlgorithm(
+                new[] {
+                    new TokenBucketRule(30,10,TimeSpan.FromSeconds(1))
+                    {
+                        ExtractTarget = context =>
+                        {
+                            return (context as HttpContext).Request.Path.Value;
+                        },
+                        CheckRuleMatching = context =>
+                        {
+                            return true;
+                        },
+                        Name="default limit rule",
+                    }
+                })
+            );
 
 
 // GraphQL
@@ -110,13 +130,19 @@ builder.Services
                 .AddTypeExtension<ProductQuery>()
                 .AddTypeExtension<CategoryQuery>()
                 .AddTypeExtension<UserQuery>()
+                .AddTypeExtension<OrderItemQuery>()
                 .AddTypeExtension<CartItemQuery>()
+                .AddTypeExtension<OrderDetailsQuery>()
+                .AddTypeExtension<DiscountQuery>()
                 .AddTypeExtension<ShoppingSessionQuery>()
                 .UseAutomaticPersistedQueryPipeline()
                 .AddReadOnlyFileSystemQueryStorage("./persisted_queries")
                 .AddInMemoryQueryStorage()
-            .AddMutationType(d => d.Name("Mutation"))
+            .AddMutationType(d => d.Name(nameof(Mutation)))
                 .AddTypeExtension<BillMutation>()
+                .AddTypeExtension<DiscountMutation>()
+                .AddTypeExtension<OrderItemMutation>()
+                .AddTypeExtension<OrderDetailsMutation>()
                 .AddTypeExtension<ProductMutation>()
                 .AddTypeExtension<CategoryMutation>()
                 .AddTypeExtension<UserMutation>()
@@ -142,7 +168,7 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseWebSockets();
 app.UseStaticFiles();
-
+app.UseRateLimit(); 
 //app.UseAuthorization();
 app.UseRouting();
 app.UseCors();
@@ -159,10 +185,6 @@ app.MapHub<ChatHub>("/chathub");
 
 
 app.UseResponseCompression(); 
-
-// IoC
-//GlobalHost.DependencyResolver.Register(typeof(SignalRChatHub),() => new SignalRChatHub(new IChatRepository()));
-
 
 app.Run();
 

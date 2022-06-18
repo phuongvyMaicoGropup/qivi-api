@@ -15,8 +15,11 @@ namespace Infrastructure.Repositories
             collection = catalogContext.GetCollection<CartItem>("CartItem"); 
         }
 
-        public async Task<List<CartItem>> GetAllCartByUserId(string userId)=>
-         await collection.Find(u => u.UserId == userId).ToListAsync(); 
+        public async Task<List<CartItem>> GetBySessionId(string sessionId)
+        {
+            return await collection.Find(u => u.SessionId == sessionId).ToListAsync();
+        }
+        
             
         
     }

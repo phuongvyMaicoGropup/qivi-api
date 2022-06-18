@@ -5,8 +5,9 @@ using HotChocolate.Subscriptions;
 
 namespace Api.Mutations
 {
-	
-    [ExtendObjectType(Name = "Mutation")]
+
+    [ExtendObjectType(nameof(Mutation))]
+
 
 
     public class DiscountMutation

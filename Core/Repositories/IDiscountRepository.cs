@@ -8,6 +8,7 @@ namespace Core.Repositories
 {
 	public interface IDiscountRepository : IBaseRepository<Discount>
 	{
+		public Task<IEnumerable<Discount>> GetActiveDiscounts(); 
 	}
 
 

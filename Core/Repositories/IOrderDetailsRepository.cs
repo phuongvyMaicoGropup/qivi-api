@@ -6,6 +6,7 @@ namespace Core.Repositories
 {
 	public interface IOrderDetailsRepository :IBaseRepository<OrderDetails>
 	{
+		public Task<OrderDetails> GetByUserId(string userId);
 	}
 }
 

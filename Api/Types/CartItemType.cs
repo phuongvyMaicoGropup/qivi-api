@@ -12,7 +12,6 @@ namespace Api.Types
         protected override void Configure(IObjectTypeDescriptor<CartItem> descriptor)
         {
             descriptor.Field(_ => _.Id);
-            descriptor.Field(_ => _.UserId);
             descriptor.Field(_ => _.SessionId);
             descriptor.Field(_ => _.ProductId);
             descriptor.Field(_ => _.Quantity);

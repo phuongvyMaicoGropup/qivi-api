@@ -9,8 +9,17 @@ namespace Infrastructure.Repositories
 {
     public class DiscountRepository : BaseRepository<Discount>, IDiscountRepository
     {
+        private readonly IMongoCollection<Discount> collection;
         public DiscountRepository(ICatalogContext catalogContext) : base(catalogContext)
         {
+            collection = catalogContext.GetCollection<Discount>("Discount"); 
+        }
+
+        public async Task<IEnumerable<Discount>> GetActiveDiscounts()
+        {
+            return await collection.Find(a => a.Active == true
+            ).ToListAsync(); 
+            
         }
     }
 }

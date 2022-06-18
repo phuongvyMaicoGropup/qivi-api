@@ -15,6 +15,8 @@ namespace Api.Queries
 
 		public Task<Product> GetProductById(string id, [Service] IProductRepository productRepository) =>
 			productRepository.GetByIdAsync(id);
+		public Task<IEnumerable<Product>> GetProductByDiscountId(string id, [Service] IProductRepository productRepository) =>
+			productRepository.GetByDiscountId(id);
 
 	}
 }

@@ -15,7 +15,7 @@ namespace Api.Types
             descriptor.Field(_ => _.CreatedAt);
 
             descriptor.Field<UserResolver>(_ => _.GetUserByShoppingSessionAsync(default, default));
-            descriptor.Field<CartItemResolver>(_ => _.GetCartsFromSessionAsync(default, default));
+            descriptor.Field<CartItemResolver>(_ => _.GetCartsBySessionIdAsync(default, default));
         }
     }
 }
